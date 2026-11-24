@@ -76,7 +76,7 @@ form.addEventListener('submit', async (event) => {
   if (!form.reportValidity()) return;
   const values = Object.fromEntries(new FormData(form).entries());
   const token = String(values.token || '').trim().toUpperCase();
-  if (!/^AG-[A-F0-9]{24}$/.test(token)) {
+  if (!/^AG-(?:[A-F0-9]{12}|[A-F0-9]{16}|[A-F0-9]{24})$/.test(token)) {
     summary.textContent = 'Format token tidak sesuai. Periksa kode dari admin.';
     summary.classList.add('show');
     return;
